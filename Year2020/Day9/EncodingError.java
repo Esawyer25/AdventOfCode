@@ -1,27 +1,22 @@
-package Day9;
+package Year2020.Day9;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static Day9.Input.PUZZLE_INPUT;
-import static Day9.Input.PUZZLE_LOOKBACK;
-import static Day9.Input.TEST_INPUT;
-import static Day9.Input.TEST_LOOKBACK;
-
 public class EncodingError {
     public static void main(String[] args) {
-        long part1Test = findFirstFailing(TEST_INPUT, TEST_LOOKBACK);
+        long part1Test = findFirstFailing(Input.TEST_INPUT, Input.TEST_LOOKBACK);
         System.out.println("TEST:");
         System.out.println("Answer to part 1: " + part1Test);
-        System.out.println(part2(TEST_INPUT, part1Test));
+        System.out.println(part2(Input.TEST_INPUT, part1Test));
         System.out.println("\n---\n");
 
         System.out.println("PUZZLE:");
-        long part1Puzzle = findFirstFailing(PUZZLE_INPUT, PUZZLE_LOOKBACK);
+        long part1Puzzle = findFirstFailing(Input.PUZZLE_INPUT, Input.PUZZLE_LOOKBACK);
         System.out.println("Answer to part 1: " + part1Puzzle);
-        System.out.println(part2(PUZZLE_INPUT, part1Puzzle));
+        System.out.println(part2(Input.PUZZLE_INPUT, part1Puzzle));
     }
 
     private static long part2(List<Long> input, long target) {
