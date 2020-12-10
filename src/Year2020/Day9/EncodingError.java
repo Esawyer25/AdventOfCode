@@ -1,11 +1,18 @@
 package Year2020.Day9;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class EncodingError {
+    static Integer PUZZLE_LOOKBACK = 25;
+    static Integer TEST_LOOKBACK = 5;
+
     public static void main(String[] args) {
         long part1Test = findFirstFailing(Input.TEST_INPUT, Input.TEST_LOOKBACK);
         System.out.println("TEST:");
@@ -22,6 +29,17 @@ public class EncodingError {
     private static long part2(List<Long> input, long target) {
         List<Long> range = findContinuousRange(input, target);
         return Collections.min(range) + Collections.max(range);
+    }
+
+    private static List<Integer> getInput(String fileName) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        List<Integer> adapators = new ArrayList<>();
+        String line = br.readLine();
+        while(line != null){
+            adapators.add(Integer.valueOf(line));
+            line = br.readLine();
+        }
+        return adapators;
     }
 
     // n = length of input
@@ -69,9 +87,9 @@ public class EncodingError {
                     break;
                 }
             }
+
             if (!found) return target;
             updateCountMap(countMap, input.get(i - lookback), target);
-
         }
         return -1;
     }
