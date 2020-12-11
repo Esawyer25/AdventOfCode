@@ -8,7 +8,7 @@ Java Solutions by `@esawyer25`
 ## Progress	##
 | Day  | Part One | Part Two |
 |---|:---:|:---:|
-| Day 1| | |
+| Day 1|🌟|🌟|
 | Day 2| | |
 | Day 3| | |
 | Day 4| | |

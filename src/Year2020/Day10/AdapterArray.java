@@ -16,12 +16,14 @@ public class AdapterArray {
         System.out.println("PART 1 \nCorrect response: 22");
         System.out.println("Actual Response: "+ partOne(TEST_INPUT));
 
+        System.out.println("test 2" + partTwoRecurssive(TEST_INPUT));
+
         System.out.println("----PUZZLE----");
         System.out.println("PART 1");
         System.out.println("Response: "+ partOne(PUZZLE_INPUT));
+        //System.out.println("test 2" + partTwoRecurssive(PUZZLE_INPUT));
 
     }
-
 
     private static List<Integer> getInput(String fileName) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(fileName));
@@ -66,7 +68,7 @@ public class AdapterArray {
 
     private static long getValidArrangement(List<Integer> input, long count, int index){
         if(index == input.size() -1){
-            System.out.println(count);
+            System.out.println(count +1);
             return count + 1;
         }
 

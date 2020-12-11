@@ -1,9 +1,8 @@
 package Year2020.Day9;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import Year2020.Utils.AOCInputReader;
+
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -12,34 +11,27 @@ import java.util.Map;
 public class EncodingError {
     static Integer PUZZLE_LOOKBACK = 25;
     static Integer TEST_LOOKBACK = 5;
+    private static AOCInputReader READER = new AOCInputReader();
+    private static String TEST_INPUT = "Input/day_9_test_input.txt";
+    private static String PUZZLE_INPUT = "Input/day_9_puzzle_input.txt";
 
-    public static void main(String[] args) {
-        long part1Test = findFirstFailing(Input.TEST_INPUT, Input.TEST_LOOKBACK);
+    public static void main(String[] args) throws IOException {
+        long part1Test = findFirstFailing(TEST_INPUT, TEST_LOOKBACK);
         System.out.println("TEST:");
         System.out.println("Answer to part 1: " + part1Test);
-        System.out.println(part2(Input.TEST_INPUT, part1Test));
+        System.out.println("Answer to part 2: " + part2(TEST_INPUT, part1Test));
         System.out.println("\n---\n");
 
         System.out.println("PUZZLE:");
-        long part1Puzzle = findFirstFailing(Input.PUZZLE_INPUT, Input.PUZZLE_LOOKBACK);
+        long part1Puzzle = findFirstFailing(PUZZLE_INPUT, PUZZLE_LOOKBACK);
         System.out.println("Answer to part 1: " + part1Puzzle);
-        System.out.println(part2(Input.PUZZLE_INPUT, part1Puzzle));
+        System.out.println("Answer to part 2: " + part2(PUZZLE_INPUT, part1Puzzle));
     }
 
-    private static long part2(List<Long> input, long target) {
+    private static long part2(String fileName, long target) throws IOException {
+        List<Long> input = READER.getLongList(fileName);
         List<Long> range = findContinuousRange(input, target);
         return Collections.min(range) + Collections.max(range);
-    }
-
-    private static List<Integer> getInput(String fileName) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(fileName));
-        List<Integer> adapators = new ArrayList<>();
-        String line = br.readLine();
-        while(line != null){
-            adapators.add(Integer.valueOf(line));
-            line = br.readLine();
-        }
-        return adapators;
     }
 
     // n = length of input
@@ -66,7 +58,8 @@ public class EncodingError {
     // n = length of input, m = lookback
     //Time = O n*m
     //Space = O m
-    private static long findFirstFailing(List<Long> input, int lookback) {
+    private static long findFirstFailing(String fileName, int lookback) throws IOException {
+        List<Long> input = READER.getLongList(fileName);
         Map<Long, Integer> countMap = getCountMap(input, lookback);
 
         for (int i = lookback; i < input.size(); i++) {
