@@ -30,4 +30,26 @@ public class AOCInputReader {
         }
         return input;
     }
+
+    public List<String> getStringList(String fileName) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        List<String> input = new ArrayList<>();
+        String line = br.readLine();
+        while (line != null) {
+            input.add(line);
+            line = br.readLine();
+        }
+        return input;
+    }
+
+    public List<char[]> getCharArrList(String fileName) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        List<char[]> input = new ArrayList<>();
+        String line = br.readLine();
+        while (line != null) {
+            input.add(line.toCharArray());
+            line = br.readLine();
+        }
+        return input;
+    }
 }

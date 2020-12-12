@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 public class EncodingError {
-    static Integer PUZZLE_LOOKBACK = 25;
-    static Integer TEST_LOOKBACK = 5;
+    private static Integer PUZZLE_LOOKBACK = 25;
+    private static Integer TEST_LOOKBACK = 5;
     private static AOCInputReader READER = new AOCInputReader();
     private static String TEST_INPUT = "Input/day_9_test_input.txt";
     private static String PUZZLE_INPUT = "Input/day_9_puzzle_input.txt";
