@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 // Utils class for sharing methods for converting puzzle input into Lists.
 public class AOCInputReader {
@@ -51,5 +53,13 @@ public class AOCInputReader {
             line = br.readLine();
         }
         return input;
+    }
+
+    public List<Integer> getIntegerListFromCommaSeperatedString(String fileName) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        String line = br.readLine();
+        List<Integer> list = Arrays.stream(line.split(",")).map(Integer::valueOf)
+                .collect(Collectors.toList());
+        return list;
     }
 }
